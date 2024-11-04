@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Functions</title>
+</head>
+<body>
+  <script>
+    // addition
+    const add7 = function(x) {
+      return x + 7
+    }
+    console.log(add7(5));
+
+    // multiplication
+    const multiply = function(x, y) {
+      return x * y
+    }
+    console.log(multiply(3, 6));
+
+    // string manipulation
+    const capitalize = function(str) {
+      let a = str.slice(1).toLowerCase();
+      let b = str[0].toUpperCase();
+      return b + a;
+    }
+    console.log(capitalize('rAndoM StriNg'));
+
+    // string manipulation 2
+    const lastLetter = function(str) {
+      return str.slice(-1);
+    }
+    console.log(lastLetter('another string'));
+  </script>
+</body>
+</html>
