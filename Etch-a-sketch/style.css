@@ -1,9 +1,30 @@
+:root {
+  --cont-width: 800px;
+  --cont-height: 800px;
+}
+
+html {
+  padding: 0;
+  margin: 0;
+}
+
 #container {
   display: flex;
+  width: var(--cont-width);
+  height: var(--cont-height);
+  border: 1px solid red;
 }
 
 .innerDiv {
+  box-sizing: border-box;
   border: 1px solid black;
-  width: 30px;
-  height: 30px;
+  width: calc(var(--cont-width) / 16.67);
+  height: calc(var(--cont-height) / 16.67);
+}
+
+#btn {
+  margin-bottom: 20px;
+  border: 1px solid black;
+  padding: 5px 10px;
+  font-size: 20px;
 }
