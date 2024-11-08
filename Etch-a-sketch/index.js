@@ -30,7 +30,11 @@ const createDivs = function () {
 
 const drawOnGrid = function (divEl) {
   divEl.addEventListener('mouseenter', function () {
-    divEl.style.backgroundColor = 'black';
+    const rand1 = Math.trunc(Math.random() * 256);
+    const rand2 = Math.trunc(Math.random() * 256);
+    const rand3 = Math.trunc(Math.random() * 256);
+    divEl.style.backgroundColor = `rgb(${rand1}, ${rand2}, ${rand3})`;
+    console.log(divEl.style.backgroundColor);
   });
 };
 
