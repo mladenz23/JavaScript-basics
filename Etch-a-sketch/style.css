@@ -18,8 +18,8 @@ html {
 .innerDiv {
   box-sizing: border-box;
   border: 1px solid black;
-  width: calc(var(--cont-width) / 16.67);
-  height: calc(var(--cont-height) / 16.67);
+  width: calc(var(--cont-width) / 16);
+  height: calc(var(--cont-height) / 16);
 }
 
 #btn {

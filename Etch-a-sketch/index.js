@@ -1,17 +1,17 @@
 const container = document.querySelector('#container');
 const btn = document.querySelector('#btn');
-
-let div;
-let div2;
-const innerDivs = [];
-
 const contStyles = window.getComputedStyle(container);
 const contWidth = contStyles.getPropertyValue('width');
 const contHeight = contStyles.getPropertyValue('height');
 
+const innerDivs = [];
+let div;
+let div2;
 let popup = 16;
 
 const createDivs = function () {
+  container.innerHTML = '';
+
   for (let i = 0; i < popup; i++) {
     div = document.createElement('div');
     div.classList.add('outerDiv');
@@ -23,34 +23,44 @@ const createDivs = function () {
       div.appendChild(div2);
 
       innerDivs.push(div2);
+      drawOnGrid(div2);
     }
   }
 };
 
+const drawOnGrid = function (divEl) {
+  divEl.addEventListener('mouseenter', function () {
+    divEl.style.backgroundColor = 'black';
+  });
+};
+
+createDivs();
+
 const changeSquareNumber = function () {
   btn.addEventListener('click', function () {
     popup = +prompt('Enter the number of squares per line (MAX 100): ');
-    createDivs();
+    if (popup <= 100) {
+      createDivs();
 
-    const squareWidth = (div2.style.width =
-      parseFloat(contWidth) / popup).toString();
-    const squareHeight = (div2.style.height =
-      parseFloat(contHeight) / popup).toString();
+      const squareWidth = (div2.style.width =
+        parseFloat(contWidth) / popup).toString();
+      const squareHeight = (div2.style.height =
+        parseFloat(contHeight) / popup).toString();
 
-    // Fix stacking of grids on multiple button entries
-    innerDivs.forEach(div => {
-      div.setAttribute(
-        'style',
-        `width: ${squareWidth}px; height: ${squareHeight}px;`
-      );
+      innerDivs.forEach(div => {
+        div.setAttribute(
+          'style',
+          `width: ${squareWidth}px; height: ${squareHeight}px;`
+        );
 
-      // div.addEventListener('mouseenter', function () {
-      //   div.style.backgroundColor = 'black';
-      // });
-      // div.addEventListener('mouseleave', function () {
-      //   div.style.backgroundColor = 'white';
-      // });
-    });
+        drawOnGrid(div);
+        // div.addEventListener('mouseenter', function () {
+        //   div.style.backgroundColor = 'black';
+        // });
+      });
+    } else {
+      alert('Maximum number of squares per row is 100. Please try again.');
+    }
   });
 };
 
