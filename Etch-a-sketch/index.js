@@ -28,13 +28,22 @@ const createDivs = function () {
   }
 };
 
+const colorHelper = function () {};
+
 const drawOnGrid = function (divEl) {
   divEl.addEventListener('mouseenter', function () {
     const rand1 = Math.trunc(Math.random() * 256);
     const rand2 = Math.trunc(Math.random() * 256);
     const rand3 = Math.trunc(Math.random() * 256);
-    divEl.style.backgroundColor = `rgb(${rand1}, ${rand2}, ${rand3})`;
-    console.log(divEl.style.backgroundColor);
+    let op = 0.1;
+    if (!divEl.hasAttribute('style')) {
+      divEl.setAttribute(
+        'style',
+        `background-color: rgb(${rand1}, ${rand2}, ${rand3}); opacity: ${op}`
+      );
+    } else {
+      divEl.style.opacity = +divEl.style.opacity + 0.1;
+    }
   });
 };
 
