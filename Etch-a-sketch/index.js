@@ -9,6 +9,21 @@ let div;
 let div2;
 let popup = 16;
 
+const drawOnGrid = function (divEl) {
+  divEl.addEventListener('mouseenter', function () {
+    const rand1 = Math.trunc(Math.random() * 256);
+    const rand2 = Math.trunc(Math.random() * 256);
+    const rand3 = Math.trunc(Math.random() * 256);
+
+    if (!divEl.style.backgroundColor) {
+      divEl.style.backgroundColor = `rgb(${rand1}, ${rand2}, ${rand3})`;
+      divEl.style.opacity = 0.1;
+    } else {
+      divEl.style.opacity = +divEl.style.opacity + 0.1;
+    }
+  });
+};
+
 const createDivs = function () {
   container.innerHTML = '';
 
@@ -26,25 +41,6 @@ const createDivs = function () {
       drawOnGrid(div2);
     }
   }
-};
-
-const colorHelper = function () {};
-
-const drawOnGrid = function (divEl) {
-  divEl.addEventListener('mouseenter', function () {
-    const rand1 = Math.trunc(Math.random() * 256);
-    const rand2 = Math.trunc(Math.random() * 256);
-    const rand3 = Math.trunc(Math.random() * 256);
-    let op = 0.1;
-    if (!divEl.hasAttribute('style')) {
-      divEl.setAttribute(
-        'style',
-        `background-color: rgb(${rand1}, ${rand2}, ${rand3}); opacity: ${op}`
-      );
-    } else {
-      divEl.style.opacity = +divEl.style.opacity + 0.1;
-    }
-  });
 };
 
 createDivs();
@@ -65,7 +61,6 @@ const changeSquareNumber = function () {
           'style',
           `width: ${squareWidth}px; height: ${squareHeight}px;`
         );
-
         drawOnGrid(div);
       });
     } else {
