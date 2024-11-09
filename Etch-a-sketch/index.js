@@ -67,9 +67,6 @@ const changeSquareNumber = function () {
         );
 
         drawOnGrid(div);
-        // div.addEventListener('mouseenter', function () {
-        //   div.style.backgroundColor = 'black';
-        // });
       });
     } else {
       alert('Maximum number of squares per row is 100. Please try again.');
